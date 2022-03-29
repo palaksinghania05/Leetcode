@@ -6,62 +6,42 @@
 
 package easy;
 
+import java.util.Scanner;
+
 public class RomanToInteger {
-    public int romanToInt(String s) {
-        if (s == null) {
-            return 0;
-        }
-
-        int length = s.length();
-        int sum = 0;
-        int pre = 0;
-
-        for (int i = length - 1; i >= 0; i--) {
-            int cur = romanTable(s.charAt(i));
-
-            if (i == length - 1) {
-                sum = sum + cur;
+    public static int romanToInt(String s) {
+        int integer = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char character = s.charAt(i);
+            if (i == 0) {
+                integer += predefinedTable(character);
             } else {
-                if (cur < pre) {
-                    sum = sum - cur;
-                } else {
-                    sum = sum + cur;
-                }
+                char previousChar = s.charAt(i - 1);
+                if (predefinedTable(previousChar) < predefinedTable(character))
+                    integer += predefinedTable(character) - 2 * predefinedTable(previousChar);
+                else
+                    integer += predefinedTable(character);
             }
-            pre = cur;
         }
-
-        return sum;
+        return integer;
     }
 
-    public int romanTable(char c) {
-        int num = 0;
-        switch (c) {
-            case 'I':
-                num = 1;
-                break;
-            case 'V':
-                num = 5;
-                break;
-            case 'X':
-                num = 10;
-                break;
-            case 'L':
-                num = 50;
-                break;
-            case 'C':
-                num = 100;
-                break;
-            case 'D':
-                num = 500;
-                break;
-            case 'M':
-                num = 1000;
-                break;
-            default:
-                num = 0;
-                break;
-        }
-        return num;
+    public static int predefinedTable(char ch) {
+        return switch (ch) {
+            case 'I' -> 1;
+            case 'V' -> 5;
+            case 'X' -> 10;
+            case 'L' -> 50;
+            case 'C' -> 100;
+            case 'D' -> 500;
+            case 'M' -> 1000;
+            default -> 0;
+        };
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String roman = sc.next();
+        System.out.println(romanToInt(roman));
     }
 }
