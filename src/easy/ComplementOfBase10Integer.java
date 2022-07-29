@@ -4,6 +4,7 @@
  * Date: 26-07-2022
  */
 
+//Problem 1009
 package easy;
 
 import java.util.Scanner;

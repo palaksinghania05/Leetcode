@@ -4,6 +4,7 @@
  * Date: 25-07-2022
  */
 
+//Problem 1688
 package easy;
 
 public class CountOfMatchesInTournament {
