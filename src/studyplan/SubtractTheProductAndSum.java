@@ -4,6 +4,7 @@
  * Date: 03-08-2022
  */
 
+//Problem 1281
 package studyplan;
 
 public class SubtractTheProductAndSum {
