@@ -19,7 +19,7 @@ public class SignOfProductOfArray {
         BigInteger product = BigInteger.ONE;
         for (int i = 0; i < nums.length; i++) {
             product = product.multiply(BigInteger.valueOf(nums[i]));
-            System.out.println(product);
+           // System.out.println(product);
         }
         return signFunc(product);
     }
