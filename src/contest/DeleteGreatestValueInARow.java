@@ -21,16 +21,16 @@ public class DeleteGreatestValueInARow {
         int max = 0;
         int[] result = new int[grid[0].length];
         for (int i = 0; i < grid[0].length; i++) {
-            for (int j = 0; j < grid.length; j++) {
-                if (grid[j][i] > max)
-                    max = grid[j][i];
+            for (int[] ints : grid) {
+                if (ints[i] > max)
+                    max = ints[i];
             }
             result[i] = max;
             max = 0;
         }
         int sum = 0;
-        for (int i = 0; i < result.length; i++) {
-            sum = sum + result[i];
+        for (int j : result) {
+            sum = sum + j;
         }
         return sum;
     }
